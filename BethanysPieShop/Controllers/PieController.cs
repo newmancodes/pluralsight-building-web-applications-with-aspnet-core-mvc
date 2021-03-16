@@ -29,5 +29,17 @@ namespace BethanysPieShop.Controllers
 
             return View(piesListViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var pie = this.pieRepository.GetPieByPieId(id);
+            
+            if (pie == null)
+            {
+                return NotFound();
+            }
+
+            return View(pie);
+        }
     }
 }
